@@ -1,6 +1,8 @@
 package com.lebq.evaluacionJava.service;
 
+import com.lebq.evaluacionJava.config.PasswordConfig;
 import com.lebq.evaluacionJava.dto.UserRequest;
+import com.lebq.evaluacionJava.exception.InvalidPasswordException;
 import com.lebq.evaluacionJava.model.Phone;
 import com.lebq.evaluacionJava.model.User;
 import com.lebq.evaluacionJava.repository.UserRepository;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,8 +25,15 @@ public class UserService {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @Autowired
+    private PasswordConfig passwordConfig;
+
     @Transactional
     public User createUser(UserRequest userRequest){
+        if(!Pattern.matches(passwordConfig.getPasswordRegex(), userRequest.getPassword())){
+            throw new InvalidPasswordException("La contraseña no cumple con el formato requerido");
+        }
+
         User user = new User();
         user.setName(userRequest.getName());
         user.setEmail(userRequest.getEmail());

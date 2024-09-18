@@ -20,8 +20,8 @@ public class UserRequest {
     private String email;
 
     @Pattern(
-            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
-            message = "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial"
+            regexp = "",
+            message = "La contraseña debe cumplir con el formato requerido"
     )
     private String password;
 
