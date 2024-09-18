@@ -53,14 +53,14 @@ Ejemplo del Body:
 
 json
 {
-  "name": "Juan Rodriguez",
-  "email": "juan@rodriguez.org",
-  "password": "Hunter2@",
+  "name": "Luis Barboza",
+  "email": "luis@barboza.org",
+  "password": "Ligjm5@",
   "phones": [
     {
-      "number": "1234567",
-      "citycode": "1",
-      "contrycode": "57"
+      "number": "987654321",
+      "citycode": "15084",
+      "contrycode": "51"
     }
   ]
 }
