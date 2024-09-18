@@ -64,3 +64,8 @@ json
     }
   ]
 }
+
+Adjunto la captura del diagrama de la solución.
+
+![Captura de Pantalla 2024-09-18 a la(s) 00 14 20](https://github.com/user-attachments/assets/d6a0a0e3-e0b7-421d-aed4-28b891204663)
+
