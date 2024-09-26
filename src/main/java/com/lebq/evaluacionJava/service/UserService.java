@@ -1,7 +1,9 @@
 package com.lebq.evaluacionJava.service;
 
+import com.lebq.evaluacionJava.config.EmailConfig;
 import com.lebq.evaluacionJava.config.PasswordConfig;
 import com.lebq.evaluacionJava.dto.UserRequest;
+import com.lebq.evaluacionJava.exception.InvalidEmailException;
 import com.lebq.evaluacionJava.exception.InvalidPasswordException;
 import com.lebq.evaluacionJava.model.Phone;
 import com.lebq.evaluacionJava.model.User;
@@ -28,10 +30,17 @@ public class UserService {
     @Autowired
     private PasswordConfig passwordConfig;
 
+    @Autowired
+    private EmailConfig emailConfig;
+
     @Transactional
     public User createUser(UserRequest userRequest){
         if(!Pattern.matches(passwordConfig.getPasswordRegex(), userRequest.getPassword())){
             throw new InvalidPasswordException("La contraseña no cumple con el formato requerido");
+        }
+
+        if(!Pattern.matches(emailConfig.getEmailRegex(), userRequest.getEmail())){
+            throw new InvalidEmailException("El email ingresado no cumple con el formato requerido");
         }
 
         User user = new User();

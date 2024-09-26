@@ -14,7 +14,7 @@ public class UserRequest {
     private String name;
 
     @Pattern(
-            regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+            regexp = "",
             message = "El email debe tener el formato correcto"
     )
     private String email;
