@@ -1,5 +1,7 @@
 package com.lebq.evaluacionJava.service;
 
+import com.lebq.evaluacionJava.config.EmailConfig;
+import com.lebq.evaluacionJava.config.PasswordConfig;
 import com.lebq.evaluacionJava.dto.PhoneRequest;
 import com.lebq.evaluacionJava.dto.UserRequest;
 import com.lebq.evaluacionJava.model.User;
@@ -28,12 +30,21 @@ public class UserServiceTest {
     @Mock
     private JwtUtil jwtUtil;
 
+    @Mock
+    private PasswordConfig passwordConfig;
+
+    @Mock
+    private EmailConfig emailConfig;
+
     @InjectMocks
     private UserService userService;
 
     @BeforeEach
     void setUp(){
+
         MockitoAnnotations.initMocks(this);
+        when(passwordConfig.getPasswordRegex()).thenReturn("^[A-Za-z0-9]{8,}$"); // example regex
+        when(emailConfig.getEmailRegex()).thenReturn("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"); // example regex
     }
 
     @Test
@@ -41,7 +52,7 @@ public class UserServiceTest {
         UserRequest userRequest = new UserRequest();
         userRequest.setName("Luis Barboza");
         userRequest.setEmail("luis@barboza.com");
-        userRequest.setPassword("Ligjm5@");
+        userRequest.setPassword("Ligjm2024");
 
         PhoneRequest phoneRequest = new PhoneRequest();
         phoneRequest.setNumber("999999999");
