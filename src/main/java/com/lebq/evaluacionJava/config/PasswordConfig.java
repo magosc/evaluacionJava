@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PasswordConfig {
 
-    @Value("%{password.regex.regexp}")
+    @Value("${password.regex}")
     private String passwordRegex;
 }

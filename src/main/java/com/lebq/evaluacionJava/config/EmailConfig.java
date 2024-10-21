@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EmailConfig {
 
-    @Value("%{email.regex.regexp}")
+    @Value("${email.regex}")
     private String emailRegex;
 }
