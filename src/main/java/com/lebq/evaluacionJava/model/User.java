@@ -1,5 +1,6 @@
 package com.lebq.evaluacionJava.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import javax.validation.constraints.*;
 import lombok.Getter;
@@ -17,13 +18,17 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(description = "Identificador único del usuario", example = "1")
     private UUID id;
 
+    @Schema(description = "Nombre del usuario", example = "Pepito Pérez")
     private String name;
 
+    @Schema(description = "Correo electrónico del usuario", example = "pepito.perez@correo.com")
     @Column(unique = true)
     private String email;
 
+    @Schema(description = "Contraseña del usuario")
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

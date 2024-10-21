@@ -6,8 +6,8 @@ import com.lebq.evaluacionJava.exception.UserAlreadyExistsException;
 import com.lebq.evaluacionJava.model.User;
 import com.lebq.evaluacionJava.repository.UserRepository;
 import com.lebq.evaluacionJava.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
-@Api(value = "API Usuarios", description = "Operaciones para la gestion de usuarios")
+@Tag(name = "API Usuarios", description = "Operaciones para la gestion de usuarios")
 public class UserController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @ApiOperation(value = "Crea un nuevo usuario", notes = "Crea un nuevo usuario generando su token JWT y lo persiste en la BD")
+    @Operation(summary = "Crea un nuevo usuario", description = "Crea un nuevo usuario generando su token JWT y lo persiste en la BD")
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody UserRequest userRequest,
                                         BindingResult result){
